@@ -348,89 +348,6 @@ document.querySelectorAll('.netflix-carousel:not(.auto-scroll)').forEach(carouse
     carousel.style.cursor = 'grab';
 });
 
-// ===== FILE UPLOAD HANDLING =====
-const fileUploadArea = document.getElementById('fileUploadArea');
-const fileInput = document.getElementById('resume');
-const fileNameDisplay = document.getElementById('fileName');
-const fileUploadText = document.querySelector('.file-upload-text');
-
-if (fileUploadArea && fileInput) {
-    // Click to upload
-    fileUploadArea.addEventListener('click', () => {
-        fileInput.click();
-    });
-
-    // File selected
-    fileInput.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        handleFileSelect(file);
-    });
-
-    // Drag and drop
-    fileUploadArea.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        fileUploadArea.style.borderColor = 'var(--netflix-red)';
-        fileUploadArea.style.background = 'rgba(229, 9, 20, 0.1)';
-    });
-
-    fileUploadArea.addEventListener('dragleave', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        fileUploadArea.style.borderColor = '';
-        fileUploadArea.style.background = '';
-    });
-
-    fileUploadArea.addEventListener('drop', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        fileUploadArea.style.borderColor = '';
-        fileUploadArea.style.background = '';
-
-        const file = e.dataTransfer.files[0];
-        if (file) {
-            // Update file input
-            const dataTransfer = new DataTransfer();
-            dataTransfer.items.add(file);
-            fileInput.files = dataTransfer.files;
-            handleFileSelect(file);
-        }
-    });
-}
-
-function handleFileSelect(file) {
-    if (!file) return;
-
-    // Validate file size (5MB max)
-    if (file.size > 5 * 1024 * 1024) {
-        showFormStatus('error', 'File size must be less than 5MB');
-        fileInput.value = '';
-        return;
-    }
-
-    // Validate file type
-    const allowedTypes = [
-        'application/pdf',
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-    ];
-
-    if (!allowedTypes.includes(file.type)) {
-        showFormStatus('error', 'Please upload a PDF, DOC, or DOCX file');
-        fileInput.value = '';
-        return;
-    }
-
-    // Update UI
-    if (fileNameDisplay) {
-        fileNameDisplay.textContent = `Selected: ${file.name}`;
-        fileNameDisplay.style.display = 'block';
-    }
-    if (fileUploadText) {
-        fileUploadText.textContent = 'File selected! Click to change';
-    }
-}
-
 // ===== REFERRAL FORM SUBMISSION =====
 const referralForm = document.getElementById('referralForm');
 const submitBtn = document.getElementById('submitBtn');
@@ -448,27 +365,24 @@ if (referralForm) {
         try {
             const formData = new FormData(referralForm);
 
-            // Add Web3Forms access key (REPLACE WITH YOUR ACTUAL KEY)
-            formData.append('access_key', 'YOUR_WEB3FORMS_ACCESS_KEY_HERE');
-
-            // Add subject for email
-            formData.append('subject', 'New IBM Referral Request');
+            // FormBold endpoint
+            const formboldEndpoint = 'https://formbold.com/s/3dkXb';
 
             // Send form
-            const response = await fetch('https://api.web3forms.com/submit', {
+            const response = await fetch(formboldEndpoint, {
                 method: 'POST',
                 body: formData
             });
 
-            const data = await response.json();
-
-            if (data.success) {
+            if (response.ok) {
                 showFormStatus('success', '✓ Thank you! Your referral request has been submitted successfully. I will review it and get back to you soon!');
                 referralForm.reset();
-                if (fileNameDisplay) fileNameDisplay.textContent = '';
-                if (fileUploadText) fileUploadText.textContent = 'Click to upload or drag and drop';
             } else {
-                throw new Error('Submission failed');
+                // Handle FormBold error response
+                const data = await response.json().catch(() => ({ message: 'Submission failed' }));
+                const errorMsg = data.message || data.error || 'Submission failed';
+                console.error('FormBold error:', errorMsg);
+                throw new Error(errorMsg);
             }
         } catch (error) {
             console.error('Form submission error:', error);
@@ -629,3 +543,93 @@ function preventHorizontalScroll() {
 
 window.addEventListener('resize', preventHorizontalScroll);
 preventHorizontalScroll();
+
+// ===== MUSIC PLAYER (Netflix-style) =====
+const netflixSound = document.getElementById('netflixSound');
+const backgroundMusic = document.getElementById('backgroundMusic');
+const musicBtn = document.getElementById('musicBtn');
+const musicControl = document.getElementById('musicControl');
+let isMusicPlaying = false;
+
+// Set initial volume
+if (backgroundMusic) {
+    backgroundMusic.volume = 0.5; // 50% volume for background music
+}
+
+if (netflixSound) {
+    netflixSound.volume = 0.9; // 90% volume for Netflix sound
+}
+
+// Play Netflix "ta-dum" sound after loader, then start background music
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        // Play Netflix sound first
+        if (netflixSound) {
+            netflixSound.play().catch(err => {
+                console.log('Autoplay prevented:', err);
+                // If autoplay is blocked, show music control immediately
+                if (musicControl) {
+                    musicControl.style.opacity = '1';
+                }
+            });
+            
+            // When Netflix sound ends, start background music
+            netflixSound.addEventListener('ended', () => {
+                if (backgroundMusic) {
+                    backgroundMusic.play().then(() => {
+                        isMusicPlaying = true;
+                        musicBtn.classList.add('playing');
+                    }).catch(err => {
+                        console.log('Background music autoplay prevented:', err);
+                    });
+                }
+            });
+        }
+    }, 2200); // Start after loader (2000ms) + small delay
+});
+
+// Music control button functionality
+if (musicBtn) {
+    musicBtn.addEventListener('click', () => {
+        if (isMusicPlaying) {
+            // Mute/pause music
+            backgroundMusic.pause();
+            musicBtn.classList.remove('playing');
+            musicBtn.classList.add('muted');
+            musicBtn.querySelector('.music-status').textContent = 'Off';
+            musicBtn.querySelector('i').className = 'fas fa-music-slash';
+            isMusicPlaying = false;
+        } else {
+            // Play/unmute music
+            backgroundMusic.play().then(() => {
+                musicBtn.classList.add('playing');
+                musicBtn.classList.remove('muted');
+                musicBtn.querySelector('.music-status').textContent = 'On';
+                musicBtn.querySelector('i').className = 'fas fa-music';
+                isMusicPlaying = true;
+            }).catch(err => {
+                console.log('Could not play music:', err);
+                alert('Click anywhere on the page first to enable music');
+            });
+        }
+    });
+}
+
+// Fallback: If autoplay is blocked, allow user to start music with any click
+let userInteracted = false;
+document.addEventListener('click', function startMusicOnClick(e) {
+    if (!userInteracted && !isMusicPlaying) {
+        userInteracted = true;
+        // Try to play background music on first user interaction
+        if (backgroundMusic && backgroundMusic.paused) {
+            backgroundMusic.play().then(() => {
+                isMusicPlaying = true;
+                if (musicBtn) {
+                    musicBtn.classList.add('playing');
+                }
+            }).catch(() => {
+                // Still blocked, user needs to click the music button
+            });
+        }
+    }
+}, { once: false });

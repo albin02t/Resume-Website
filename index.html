@@ -159,7 +159,7 @@
                             <i class="fas fa-star"></i>
                         </span>
                     </div>
-                    <h3 class="featured-title">Shinigami Eyes - Watsonx Challenge Winner</h3>
+                    <h3 class="featured-title">Shinigami Eyes - Watsonx Challenge Recognition</h3>
                     <p class="featured-description">
                         Won the global IBM Watsonx Challenge with an innovative VS Code extension for automated bug/vulnerability
                         detection and unit test case generation. Leveraging advanced AI models to revolutionize developer productivity
@@ -822,18 +822,11 @@
                     </div>
 
                     <div class="form-group full-width">
-                        <label for="resume">Upload Resume (PDF, DOC, DOCX - Max 5MB) *</label>
-                        <div class="file-upload-area" id="fileUploadArea">
-                            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required hidden>
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <p class="file-upload-text">Click to upload or drag and drop</p>
-                            <p class="file-name" id="fileName"></p>
-                        </div>
-                    </div>
-
-                    <div class="form-group full-width">
                         <label for="message">Why IBM? (Optional)</label>
                         <textarea id="message" name="message" rows="4" placeholder="Tell me why you're interested in this role..."></textarea>
+                        <small style="color: #b3b3b3; margin-top: 5px; display: block;">
+                            <i class="fas fa-info-circle"></i> Please email your resume to <a href="mailto:albinthomaa@gmail.com" style="color: #e50914;">albinthomaa@gmail.com</a> after submitting this form.
+                        </small>
                     </div>
 
                     <div class="form-group checkbox-group full-width">
@@ -872,6 +865,22 @@
             <p class="footer-tagline">Built with <i class="fas fa-heart"></i> and AI</p>
         </div>
     </footer>
+
+    <!-- Audio Elements -->
+    <audio id="netflixSound" preload="auto">
+        <source src="assets/netflix-sound.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="assets/lofi-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Music Control -->
+    <div class="music-control" id="musicControl">
+        <button class="music-btn" id="musicBtn" title="Toggle Music">
+            <i class="fas fa-music"></i>
+            <span class="music-status">On</span>
+        </button>
+    </div>
 
     <!-- Custom JavaScript -->
     <script src="js/main.js"></script>
