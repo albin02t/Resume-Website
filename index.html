@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Albin Abi Thomas - Senior AI Engineer</title>
+    <title>Albin Thomas - Senior AI Engineer</title>
     <meta name="description" content="Senior AI Engineer specializing in Generative AI, RAG, and MLOps">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Netflix+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -18,13 +18,31 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Netflix Loading Animation -->
+    <div class="netflix-loader" id="netflixLoader">
+        <div class="loader-content">
+            <div class="loader-text"><span class="red-text">A</span>T</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
     <!-- Netflix-style Navigation -->
     <nav class="netflix-nav" id="navbar">
         <div class="nav-content">
             <div class="nav-left">
-                <h1 class="nav-logo">ALBIN<span class="red-text">AI</span></h1>
+                <h1 class="nav-logo"><span class="red-text">A</span>T</h1>
                 <ul class="nav-links">
                     <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#featured">Featured</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
@@ -32,9 +50,9 @@
                 </ul>
             </div>
             <div class="nav-right">
-                <a href="mailto:albinthomas231@gmail.com" class="nav-icon"><i class="fas fa-envelope"></i></a>
-                <a href="https://linkedin.com/in/albint/" target="_blank" class="nav-icon"><i class="fab fa-linkedin"></i></a>
-                <a href="https://albint.medium.com" target="_blank" class="nav-icon"><i class="fab fa-medium"></i></a>
+                <a href="mailto:albinthomas231@gmail.com" class="nav-icon" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/albint/" target="_blank" class="nav-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://albint.medium.com" target="_blank" class="nav-icon" title="Medium"><i class="fab fa-medium"></i></a>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
@@ -44,31 +62,41 @@
         </div>
     </nav>
 
-    <!-- Hero Banner (Netflix Style) -->
+    <!-- Hero Banner (Enhanced) -->
     <section class="hero-banner" id="home">
-        <div class="hero-bg">
-            <img src="data/linkedin-profile.jpeg" alt="Albin Abi Thomas" class="hero-image">
-            <div class="hero-gradient"></div>
-        </div>
-        <div class="hero-content">
+        <div class="hero-content-wrapper">
             <div class="hero-text">
-                <h1 class="hero-title">ALBIN ABI THOMAS</h1>
-                <h2 class="hero-subtitle">Senior AI Engineer at IBM</h2>
+                <div class="hero-badge">
+                    <i class="fas fa-award"></i> Senior AI Engineer
+                </div>
+                <h1 class="hero-title">
+                    <span class="name-text">ALBIN THOMAS</span>
+                </h1>
+                <h2 class="hero-subtitle">
+                    <span class="typewriter" id="typewriter"></span>
+                    <span class="cursor">|</span>
+                </h2>
                 <p class="hero-description">
                     4+ years delivering production-ready AI solutions using LLMs, Generative AI, and MLOps.
                     Building agentic RAG systems, deploying ML pipelines, and enabling scalable AI deployments.
                 </p>
                 <div class="hero-stats">
                     <div class="stat">
-                        <span class="stat-number">4+</span>
+                        <div class="stat-value">
+                            <span class="stat-number" data-target="4">0</span><span class="stat-plus">+</span>
+                        </div>
                         <span class="stat-label">Years Experience</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">70%</span>
+                        <div class="stat-value">
+                            <span class="stat-number" data-target="70">0</span><span class="stat-plus">%</span>
+                        </div>
                         <span class="stat-label">Faster Time-to-Value</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">90%</span>
+                        <div class="stat-value">
+                            <span class="stat-number" data-target="90">0</span><span class="stat-plus">%</span>
+                        </div>
                         <span class="stat-label">Eval Time Reduction</span>
                     </div>
                 </div>
@@ -80,45 +108,126 @@
                         <i class="fas fa-handshake"></i> IBM Referral
                     </a>
                     <a href="data/Resume-sept-2025-ver12.pdf" download class="btn-download">
-                        <i class="fas fa-download"></i> Download Resume
+                        <i class="fas fa-download"></i> Resume
                     </a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="profile-card-wrapper">
+                    <div class="profile-glow"></div>
+                    <div class="profile-card">
+                        <img src="data/linkedin-profile.jpeg" alt="Albin Thomas" class="profile-image">
+                        <div class="profile-badge">
+                            <i class="fab fa-python"></i>
+                            <i class="fas fa-robot"></i>
+                            <i class="fas fa-brain"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="hero-fade-bottom"></div>
     </section>
 
-    <!-- Experience Section - Netflix Carousel -->
+    <!-- Featured Project Showcase -->
+    <section class="featured-section" id="featured">
+        <div class="section-container">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i> Featured Achievement
+            </h2>
+            <div class="featured-card">
+                <div class="featured-image">
+                    <div class="play-button-large">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="featured-badge-top">
+                        <span class="badge-new">AWARD WINNING</span>
+                        <span class="badge-match">98% Match</span>
+                    </div>
+                </div>
+                <div class="featured-content">
+                    <div class="featured-meta">
+                        <span class="meta-tag">Global Recognition</span>
+                        <span class="meta-separator">•</span>
+                        <span class="meta-tag">2024</span>
+                        <span class="meta-separator">•</span>
+                        <span class="meta-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <h3 class="featured-title">Shinigami Eyes - Watsonx Challenge Winner</h3>
+                    <p class="featured-description">
+                        Won the global IBM Watsonx Challenge with an innovative VS Code extension for automated bug/vulnerability
+                        detection and unit test case generation. Leveraging advanced AI models to revolutionize developer productivity
+                        and code quality assurance.
+                    </p>
+                    <div class="featured-tags">
+                        <span class="tag">VS Code Extension</span>
+                        <span class="tag">AI/ML</span>
+                        <span class="tag">Code Analysis</span>
+                        <span class="tag">Watsonx</span>
+                        <span class="tag">LLMs</span>
+                    </div>
+                    <div class="featured-actions">
+                        <button class="btn-featured-primary">
+                            <i class="fas fa-info-circle"></i> More Info
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section - Auto-Scrolling Carousel -->
     <section class="netflix-section" id="experience">
         <div class="section-container">
             <h2 class="section-title">Professional Experience</h2>
-            <div class="carousel-container">
+            <div class="carousel-wrapper">
                 <button class="carousel-nav carousel-nav-left" data-carousel="experience">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <div class="netflix-carousel" id="experienceCarousel">
+                <div class="netflix-carousel auto-scroll" id="experienceCarousel">
                     <!-- IBM Role -->
                     <div class="netflix-card large">
-                        <div class="card-image">
-                            <div class="company-badge ibm">IBM</div>
+                        <div class="card-badge-corner">
+                            <span class="badge-expert">CURRENT</span>
+                        </div>
+                        <div class="card-image ibm-bg">
+                            <div class="company-badge ibm">
+                                <img src="data/ibm-logo.png" alt="IBM" class="company-logo">
+                            </div>
                             <div class="card-gradient"></div>
+                            <div class="play-icon-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
                         </div>
                         <div class="card-content">
+                            <div class="card-match">
+                                <span class="match-percentage">95% Match</span>
+                            </div>
                             <h3 class="card-title">Senior AI Engineer</h3>
-                            <p class="card-meta">IBM India Pvt Ltd • Nov 2023 - Present</p>
+                            <p class="card-meta">
+                                <i class="fas fa-building"></i> IBM India Pvt Ltd
+                                <span class="meta-separator">•</span>
+                                Nov 2023 - Present
+                            </p>
                             <p class="card-description">
                                 Leading client-facing Generative AI POCs with IBM Watsonx products, accelerating
                                 time-to-value by 70% across Latin America and North America.
                             </p>
                             <div class="card-highlights">
-                                <span class="highlight-badge">Generative AI</span>
-                                <span class="highlight-badge">LLMs</span>
-                                <span class="highlight-badge">RAG Systems</span>
-                                <span class="highlight-badge">MLOps</span>
+                                <span class="highlight-badge ai">Generative AI</span>
+                                <span class="highlight-badge llm">LLMs</span>
+                                <span class="highlight-badge rag">RAG Systems</span>
+                                <span class="highlight-badge mlops">MLOps</span>
                             </div>
                         </div>
                         <div class="card-hover-details">
-                            <h4>Key Achievements:</h4>
+                            <h4><i class="fas fa-trophy"></i> Key Achievements:</h4>
                             <ul>
                                 <li>Built multimodal RAG chatbot with agentic behavior using Vector Databases</li>
                                 <li>Developed automated entity extraction evaluation system (90% time reduction)</li>
@@ -135,26 +244,38 @@
 
                     <!-- Winjit Role -->
                     <div class="netflix-card large">
-                        <div class="card-image">
-                            <div class="company-badge winjit">Winjit</div>
+                        <div class="card-image winjit-bg">
+                            <div class="company-badge winjit">
+                                <img src="data/winjit-logo.jpeg" alt="Winjit" class="company-logo">
+                            </div>
                             <div class="card-gradient"></div>
+                            <div class="play-icon-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
                         </div>
                         <div class="card-content">
+                            <div class="card-match">
+                                <span class="match-percentage">92% Match</span>
+                            </div>
                             <h3 class="card-title">Software Developer</h3>
-                            <p class="card-meta">Winjit Technologies • May 2021 - Nov 2023</p>
+                            <p class="card-meta">
+                                <i class="fas fa-building"></i> Winjit Technologies
+                                <span class="meta-separator">•</span>
+                                May 2021 - Nov 2023
+                            </p>
                             <p class="card-description">
                                 Developed flagship AutoML platform (PredictSense), managing end-to-end ML workflows
                                 and reducing development efforts by 40%.
                             </p>
                             <div class="card-highlights">
-                                <span class="highlight-badge">AutoML</span>
-                                <span class="highlight-badge">Time Series</span>
-                                <span class="highlight-badge">MLOps</span>
-                                <span class="highlight-badge">Docker</span>
+                                <span class="highlight-badge automl">AutoML</span>
+                                <span class="highlight-badge ts">Time Series</span>
+                                <span class="highlight-badge mlops">MLOps</span>
+                                <span class="highlight-badge docker">Docker</span>
                             </div>
                         </div>
                         <div class="card-hover-details">
-                            <h4>Key Achievements:</h4>
+                            <h4><i class="fas fa-trophy"></i> Key Achievements:</h4>
                             <ul>
                                 <li>Enhanced Clustering Analysis module improving insights by 70%</li>
                                 <li>Led POC projects: Crime Prediction, Security Contract Expiration, Demand Forecasting</li>
@@ -171,13 +292,19 @@
 
                     <!-- Education Card -->
                     <div class="netflix-card">
-                        <div class="card-image education">
-                            <div class="company-badge manit">MANIT</div>
+                        <div class="card-image education-bg">
+                            <div class="company-badge manit">
+                                <img src="data/manit-logo.png" alt="MANIT Bhopal" class="company-logo">
+                            </div>
                             <div class="card-gradient"></div>
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">B.Tech in CS & Engineering</h3>
-                            <p class="card-meta">MANIT Bhopal • Jul 2017 - May 2021</p>
+                            <p class="card-meta">
+                                <i class="fas fa-graduation-cap"></i> MANIT Bhopal
+                                <span class="meta-separator">•</span>
+                                2017 - 2021
+                            </p>
                             <p class="card-description">
                                 Maulana Azad National Institute of Technology, Bhopal
                             </p>
@@ -191,147 +318,183 @@
         </div>
     </section>
 
-    <!-- Featured Projects - Netflix Carousel -->
+    <!-- Projects Section - Auto-Scrolling Carousel -->
     <section class="netflix-section" id="projects">
         <div class="section-container">
             <h2 class="section-title">Featured Projects & Achievements</h2>
-            <div class="carousel-container">
+            <div class="carousel-wrapper">
                 <button class="carousel-nav carousel-nav-left" data-carousel="projects">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <div class="netflix-carousel" id="projectsCarousel">
-                    <!-- Shinigami Eyes -->
+                <div class="netflix-carousel auto-scroll" id="projectsCarousel" data-speed="slow">
+                    <!-- Projects will be duplicated for infinite scroll -->
                     <div class="netflix-card">
+                        <div class="card-badge-corner">
+                            <span class="badge-new">NEW</span>
+                        </div>
                         <div class="card-image project-1">
                             <div class="play-icon"><i class="fas fa-code"></i></div>
                             <div class="card-gradient"></div>
+                            <div class="play-icon-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
                         </div>
                         <div class="card-content">
+                            <div class="card-match">
+                                <span class="match-percentage">98% Match</span>
+                            </div>
                             <h3 class="card-title">Shinigami Eyes</h3>
-                            <p class="card-meta">Global Watsonx Challenge Winner</p>
+                            <p class="card-meta">
+                                <span class="meta-tag winner">🏆 Global Winner</span>
+                            </p>
                             <p class="card-description">
                                 VS Code extension for bug/vulnerability detection and unit test generation
                             </p>
-                            <div class="match-score">
-                                <span class="match-percentage">98% Match</span>
-                            </div>
                         </div>
                     </div>
 
-                    <!-- Deepfake Detection -->
                     <div class="netflix-card">
                         <div class="card-image project-2">
                             <div class="play-icon"><i class="fas fa-shield-alt"></i></div>
                             <div class="card-gradient"></div>
+                            <div class="play-icon-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
                         </div>
                         <div class="card-content">
-                            <h3 class="card-title">Deepfake Detection System</h3>
-                            <p class="card-meta">90%+ Accuracy</p>
+                            <div class="card-match">
+                                <span class="match-percentage">90% Accuracy</span>
+                            </div>
+                            <h3 class="card-title">Deepfake Detection</h3>
+                            <p class="card-meta">
+                                <span class="meta-tag">AI Security</span>
+                            </p>
                             <p class="card-description">
                                 Hybrid neural networks trained on real and AI-generated data
                             </p>
-                            <div class="match-score">
-                                <span class="match-percentage">90% Accuracy</span>
-                            </div>
                         </div>
                     </div>
 
-                    <!-- RAG Chatbot -->
                     <div class="netflix-card">
                         <div class="card-image project-3">
                             <div class="play-icon"><i class="fas fa-robot"></i></div>
                             <div class="card-gradient"></div>
+                            <div class="play-icon-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
                         </div>
                         <div class="card-content">
+                            <div class="card-match">
+                                <span class="match-percentage">Production Ready</span>
+                            </div>
                             <h3 class="card-title">Multimodal RAG Chatbot</h3>
-                            <p class="card-meta">Agentic AI System</p>
+                            <p class="card-meta">
+                                <span class="meta-tag">Agentic AI</span>
+                            </p>
                             <p class="card-description">
                                 Vector database-powered chatbot with source-linked responses
                             </p>
-                            <div class="match-score">
-                                <span class="match-percentage">Production Ready</span>
-                            </div>
                         </div>
                     </div>
 
-                    <!-- Entity Extraction -->
                     <div class="netflix-card">
                         <div class="card-image project-4">
                             <div class="play-icon"><i class="fas fa-brain"></i></div>
                             <div class="card-gradient"></div>
+                            <div class="play-icon-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
                         </div>
                         <div class="card-content">
+                            <div class="card-match">
+                                <span class="match-percentage">90% Faster</span>
+                            </div>
                             <h3 class="card-title">LLM-as-Judge Evaluation</h3>
-                            <p class="card-meta">90% Time Reduction</p>
+                            <p class="card-meta">
+                                <span class="meta-tag">Automation</span>
+                            </p>
                             <p class="card-description">
                                 Automated entity extraction evaluation system using LLMs
                             </p>
-                            <div class="match-score">
-                                <span class="match-percentage">90% Faster</span>
-                            </div>
                         </div>
                     </div>
 
-                    <!-- GitHub README Creator -->
                     <div class="netflix-card">
                         <div class="card-image project-5">
                             <div class="play-icon"><i class="fab fa-github"></i></div>
                             <div class="card-gradient"></div>
+                            <div class="play-icon-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
                         </div>
                         <div class="card-content">
+                            <div class="card-match">
+                                <span class="match-percentage">5-6 hrs saved</span>
+                            </div>
                             <h3 class="card-title">GitHub README Creator</h3>
-                            <p class="card-meta">Automation Tool</p>
+                            <p class="card-meta">
+                                <span class="meta-tag">Productivity</span>
+                            </p>
                             <p class="card-description">
                                 Automated comprehensive project documentation generator
                             </p>
-                            <div class="match-score">
-                                <span class="match-percentage">5-6 hrs saved</span>
-                            </div>
                         </div>
                     </div>
 
-                    <!-- PredictSense Platform -->
                     <div class="netflix-card">
                         <div class="card-image project-6">
                             <div class="play-icon"><i class="fas fa-chart-line"></i></div>
                             <div class="card-gradient"></div>
+                            <div class="play-icon-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
                         </div>
                         <div class="card-content">
+                            <div class="card-match">
+                                <span class="match-percentage">40% Efficiency</span>
+                            </div>
                             <h3 class="card-title">PredictSense AutoML</h3>
-                            <p class="card-meta">Flagship Platform</p>
+                            <p class="card-meta">
+                                <span class="meta-tag">Platform</span>
+                            </p>
                             <p class="card-description">
                                 End-to-end AutoML platform for ML workflows
                             </p>
-                            <div class="match-score">
-                                <span class="match-percentage">40% Efficiency</span>
-                            </div>
                         </div>
                     </div>
 
-                    <!-- Text Detection -->
                     <div class="netflix-card">
                         <div class="card-image project-7">
                             <div class="play-icon"><i class="fas fa-eye"></i></div>
                             <div class="card-gradient"></div>
+                            <div class="play-icon-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">Text Detection System</h3>
-                            <p class="card-meta">OpenCV + OCR</p>
+                            <p class="card-meta">
+                                <span class="meta-tag">Computer Vision</span>
+                            </p>
                             <p class="card-description">
                                 Advanced text detection and extraction pipeline
                             </p>
                         </div>
                     </div>
 
-                    <!-- COBOL to Java -->
                     <div class="netflix-card">
                         <div class="card-image project-8">
                             <div class="play-icon"><i class="fas fa-exchange-alt"></i></div>
                             <div class="card-gradient"></div>
+                            <div class="play-icon-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">COBOL-to-Java Converter</h3>
-                            <p class="card-meta">Legacy Modernization</p>
+                            <p class="card-meta">
+                                <span class="meta-tag">Legacy Modernization</span>
+                            </p>
                             <p class="card-description">
                                 AI-powered code migration solution
                             </p>
@@ -345,131 +508,248 @@
         </div>
     </section>
 
-    <!-- Skills Section - Netflix Carousel -->
-    <section class="netflix-section" id="skills">
+    <!-- Skills Section - Enhanced with Visuals -->
+    <section class="netflix-section skills-section" id="skills">
         <div class="section-container">
             <h2 class="section-title">Technical Expertise</h2>
 
             <!-- AI/ML Skills -->
-            <div class="skill-category">
-                <h3 class="category-title">AI/ML Expertise</h3>
-                <div class="carousel-container">
-                    <button class="carousel-nav carousel-nav-left" data-carousel="ai-skills">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="netflix-carousel skills-carousel" id="aiSkillsCarousel">
-                        <div class="skill-card"><span>Generative AI</span></div>
-                        <div class="skill-card"><span>RAG</span></div>
-                        <div class="skill-card"><span>Multimodal LLMs</span></div>
-                        <div class="skill-card"><span>MLOps</span></div>
-                        <div class="skill-card"><span>AutoML</span></div>
-                        <div class="skill-card"><span>Computer Vision</span></div>
-                        <div class="skill-card"><span>NLP</span></div>
-                        <div class="skill-card"><span>Prompt Engineering</span></div>
-                        <div class="skill-card"><span>Scikit-Learn</span></div>
-                        <div class="skill-card"><span>Vector Databases</span></div>
-                        <div class="skill-card"><span>Time Series</span></div>
-                        <div class="skill-card"><span>Machine Learning</span></div>
+            <div class="skill-category-enhanced">
+                <div class="category-header">
+                    <div class="category-icon-large">
+                        <i class="fas fa-robot"></i>
                     </div>
-                    <button class="carousel-nav carousel-nav-right" data-carousel="ai-skills">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                    <div>
+                        <h3 class="category-title">AI/ML Expertise</h3>
+                        <p class="category-subtitle">Cutting-edge artificial intelligence and machine learning technologies</p>
+                    </div>
+                </div>
+                <div class="skills-grid-visual">
+                    <div class="skill-card-visual" data-level="expert">
+                        <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                        <div class="skill-progress-ring">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="54" class="progress-ring-circle-bg"></circle>
+                                <circle cx="60" cy="60" r="54" class="progress-ring-circle" data-progress="95"></circle>
+                            </svg>
+                            <div class="skill-percentage">95%</div>
+                        </div>
+                        <h4 class="skill-name">Generative AI</h4>
+                        <span class="skill-level-badge expert">Expert</span>
+                    </div>
+
+                    <div class="skill-card-visual" data-level="expert">
+                        <div class="skill-icon"><i class="fas fa-database"></i></div>
+                        <div class="skill-progress-ring">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="54" class="progress-ring-circle-bg"></circle>
+                                <circle cx="60" cy="60" r="54" class="progress-ring-circle" data-progress="95"></circle>
+                            </svg>
+                            <div class="skill-percentage">95%</div>
+                        </div>
+                        <h4 class="skill-name">RAG Systems</h4>
+                        <span class="skill-level-badge expert">Expert</span>
+                    </div>
+
+                    <div class="skill-card-visual" data-level="expert">
+                        <div class="skill-icon"><i class="fas fa-microchip"></i></div>
+                        <div class="skill-progress-ring">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="54" class="progress-ring-circle-bg"></circle>
+                                <circle cx="60" cy="60" r="54" class="progress-ring-circle" data-progress="90"></circle>
+                            </svg>
+                            <div class="skill-percentage">90%</div>
+                        </div>
+                        <h4 class="skill-name">LLMs</h4>
+                        <span class="skill-level-badge expert">Expert</span>
+                    </div>
+
+                    <div class="skill-card-visual" data-level="advanced">
+                        <div class="skill-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="skill-progress-ring">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="54" class="progress-ring-circle-bg"></circle>
+                                <circle cx="60" cy="60" r="54" class="progress-ring-circle" data-progress="90"></circle>
+                            </svg>
+                            <div class="skill-percentage">90%</div>
+                        </div>
+                        <h4 class="skill-name">MLOps</h4>
+                        <span class="skill-level-badge advanced">Advanced</span>
+                    </div>
+
+                    <div class="skill-card-visual" data-level="advanced">
+                        <div class="skill-icon"><i class="fas fa-magic"></i></div>
+                        <div class="skill-progress-ring">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="54" class="progress-ring-circle-bg"></circle>
+                                <circle cx="60" cy="60" r="54" class="progress-ring-circle" data-progress="85"></circle>
+                            </svg>
+                            <div class="skill-percentage">85%</div>
+                        </div>
+                        <h4 class="skill-name">AutoML</h4>
+                        <span class="skill-level-badge advanced">Advanced</span>
+                    </div>
+
+                    <div class="skill-card-visual" data-level="advanced">
+                        <div class="skill-icon"><i class="fas fa-eye"></i></div>
+                        <div class="skill-progress-ring">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="54" class="progress-ring-circle-bg"></circle>
+                                <circle cx="60" cy="60" r="54" class="progress-ring-circle" data-progress="85"></circle>
+                            </svg>
+                            <div class="skill-percentage">85%</div>
+                        </div>
+                        <h4 class="skill-name">Computer Vision</h4>
+                        <span class="skill-level-badge advanced">Advanced</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Programming Languages -->
-            <div class="skill-category">
-                <h3 class="category-title">Programming Languages</h3>
-                <div class="carousel-container">
-                    <div class="netflix-carousel skills-carousel">
-                        <div class="skill-card expert"><span>Python</span></div>
-                        <div class="skill-card advanced"><span>JavaScript</span></div>
-                        <div class="skill-card advanced"><span>SQL</span></div>
-                        <div class="skill-card intermediate"><span>C++</span></div>
+            <div class="skill-category-enhanced">
+                <div class="category-header">
+                    <div class="category-icon-large">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div>
+                        <h3 class="category-title">Programming Languages</h3>
+                        <p class="category-subtitle">Core programming proficiencies</p>
+                    </div>
+                </div>
+                <div class="skills-grid-visual compact">
+                    <div class="skill-card-visual" data-level="expert">
+                        <div class="skill-icon"><i class="fab fa-python"></i></div>
+                        <div class="skill-progress-ring">
+                            <svg width="100" height="100">
+                                <circle cx="50" cy="50" r="44" class="progress-ring-circle-bg"></circle>
+                                <circle cx="50" cy="50" r="44" class="progress-ring-circle" data-progress="95"></circle>
+                            </svg>
+                            <div class="skill-percentage small">95%</div>
+                        </div>
+                        <h4 class="skill-name">Python</h4>
+                        <span class="skill-level-badge expert">Expert</span>
+                    </div>
+
+                    <div class="skill-card-visual" data-level="advanced">
+                        <div class="skill-icon"><i class="fab fa-js"></i></div>
+                        <div class="skill-progress-ring">
+                            <svg width="100" height="100">
+                                <circle cx="50" cy="50" r="44" class="progress-ring-circle-bg"></circle>
+                                <circle cx="50" cy="50" r="44" class="progress-ring-circle" data-progress="80"></circle>
+                            </svg>
+                            <div class="skill-percentage small">80%</div>
+                        </div>
+                        <h4 class="skill-name">JavaScript</h4>
+                        <span class="skill-level-badge advanced">Advanced</span>
+                    </div>
+
+                    <div class="skill-card-visual" data-level="advanced">
+                        <div class="skill-icon"><i class="fas fa-database"></i></div>
+                        <div class="skill-progress-ring">
+                            <svg width="100" height="100">
+                                <circle cx="50" cy="50" r="44" class="progress-ring-circle-bg"></circle>
+                                <circle cx="50" cy="50" r="44" class="progress-ring-circle" data-progress="85"></circle>
+                            </svg>
+                            <div class="skill-percentage small">85%</div>
+                        </div>
+                        <h4 class="skill-name">SQL</h4>
+                        <span class="skill-level-badge advanced">Advanced</span>
+                    </div>
+
+                    <div class="skill-card-visual" data-level="intermediate">
+                        <div class="skill-icon"><i class="fas fa-code"></i></div>
+                        <div class="skill-progress-ring">
+                            <svg width="100" height="100">
+                                <circle cx="50" cy="50" r="44" class="progress-ring-circle-bg"></circle>
+                                <circle cx="50" cy="50" r="44" class="progress-ring-circle" data-progress="70"></circle>
+                            </svg>
+                            <div class="skill-percentage small">70%</div>
+                        </div>
+                        <h4 class="skill-name">C++</h4>
+                        <span class="skill-level-badge intermediate">Intermediate</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Frameworks & Libraries -->
+            <!-- Frameworks Auto-Scroll -->
             <div class="skill-category">
-                <h3 class="category-title">Frameworks & Libraries</h3>
-                <div class="carousel-container">
-                    <button class="carousel-nav carousel-nav-left" data-carousel="frameworks">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="netflix-carousel skills-carousel" id="frameworksCarousel">
-                        <div class="skill-card"><span>FastAPI</span></div>
-                        <div class="skill-card"><span>React.js</span></div>
-                        <div class="skill-card"><span>Flask</span></div>
-                        <div class="skill-card"><span>LangGraph</span></div>
-                        <div class="skill-card"><span>Gradio</span></div>
-                        <div class="skill-card"><span>Streamlit</span></div>
-                        <div class="skill-card"><span>Pydantic</span></div>
-                        <div class="skill-card"><span>Celery</span></div>
-                        <div class="skill-card"><span>RabbitMQ</span></div>
-                        <div class="skill-card"><span>Redis</span></div>
-                        <div class="skill-card"><span>Pandas</span></div>
-                    </div>
-                    <button class="carousel-nav carousel-nav-right" data-carousel="frameworks">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Cloud & DevOps -->
-            <div class="skill-category">
-                <h3 class="category-title">Cloud & DevOps</h3>
-                <div class="carousel-container">
-                    <div class="netflix-carousel skills-carousel">
-                        <div class="skill-card"><span>IBM Cloud</span></div>
-                        <div class="skill-card"><span>Docker</span></div>
-                        <div class="skill-card"><span>Kubernetes</span></div>
-                        <div class="skill-card"><span>Git</span></div>
-                        <div class="skill-card"><span>CI/CD</span></div>
+                <h3 class="category-title">
+                    <i class="fas fa-layer-group"></i> Frameworks & Libraries
+                </h3>
+                <div class="carousel-wrapper">
+                    <div class="netflix-carousel auto-scroll tech-carousel" data-speed="medium">
+                        <div class="tech-badge"><i class="fas fa-bolt"></i> FastAPI</div>
+                        <div class="tech-badge"><i class="fab fa-react"></i> React.js</div>
+                        <div class="tech-badge"><i class="fas fa-flask"></i> Flask</div>
+                        <div class="tech-badge"><i class="fas fa-project-diagram"></i> LangGraph</div>
+                        <div class="tech-badge"><i class="fas fa-desktop"></i> Gradio</div>
+                        <div class="tech-badge"><i class="fas fa-stream"></i> Streamlit</div>
+                        <div class="tech-badge"><i class="fas fa-check-double"></i> Pydantic</div>
+                        <div class="tech-badge"><i class="fas fa-tasks"></i> Celery</div>
+                        <div class="tech-badge"><i class="fas fa-exchange-alt"></i> RabbitMQ</div>
+                        <div class="tech-badge"><i class="fas fa-database"></i> Redis</div>
+                        <div class="tech-badge"><i class="fas fa-table"></i> Pandas</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Data & Analytics -->
+            <!-- Cloud & DevOps Auto-Scroll -->
             <div class="skill-category">
-                <h3 class="category-title">Data & Analytics Tools</h3>
-                <div class="carousel-container">
-                    <button class="carousel-nav carousel-nav-left" data-carousel="data-tools">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="netflix-carousel skills-carousel" id="dataToolsCarousel">
-                        <div class="skill-card"><span>Power BI</span></div>
-                        <div class="skill-card"><span>Cognos</span></div>
-                        <div class="skill-card"><span>Watsonx.data</span></div>
-                        <div class="skill-card"><span>Tableau</span></div>
-                        <div class="skill-card"><span>PostgreSQL</span></div>
-                        <div class="skill-card"><span>VS Code</span></div>
-                        <div class="skill-card"><span>Postman</span></div>
-                        <div class="skill-card"><span>Agile/Scrum</span></div>
+                <h3 class="category-title">
+                    <i class="fas fa-cloud"></i> Cloud & DevOps
+                </h3>
+                <div class="carousel-wrapper">
+                    <div class="netflix-carousel auto-scroll tech-carousel" data-speed="fast">
+                        <div class="tech-badge cloud"><i class="fas fa-cloud"></i> IBM Cloud</div>
+                        <div class="tech-badge cloud"><i class="fab fa-docker"></i> Docker</div>
+                        <div class="tech-badge cloud"><i class="fas fa-dharmachakra"></i> Kubernetes</div>
+                        <div class="tech-badge cloud"><i class="fab fa-git-alt"></i> Git</div>
+                        <div class="tech-badge cloud"><i class="fas fa-sync"></i> CI/CD</div>
                     </div>
-                    <button class="carousel-nav carousel-nav-right" data-carousel="data-tools">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
                 </div>
             </div>
 
             <!-- Certifications -->
             <div class="skill-category">
-                <h3 class="category-title">Certifications</h3>
-                <div class="carousel-container">
-                    <button class="carousel-nav carousel-nav-left" data-carousel="certs">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="netflix-carousel skills-carousel" id="certsCarousel">
-                        <div class="skill-card cert"><i class="fas fa-certificate"></i> Agentic AI Agents (O'Reilly)</div>
-                        <div class="skill-card cert"><i class="fas fa-certificate"></i> IBM watsonx.ai Sales Foundation</div>
-                        <div class="skill-card cert"><i class="fas fa-certificate"></i> IBM watsonx Essentials</div>
-                        <div class="skill-card cert"><i class="fas fa-certificate"></i> watsonx Orchestrate Practitioner</div>
-                        <div class="skill-card cert"><i class="fas fa-certificate"></i> Vault Sales Foundation</div>
+                <h3 class="category-title">
+                    <i class="fas fa-certificate"></i> Certifications
+                </h3>
+                <div class="certifications-grid">
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-award"></i></div>
+                        <div class="cert-content">
+                            <h4>Agentic AI Agents</h4>
+                            <p>O'Reilly</p>
+                        </div>
                     </div>
-                    <button class="carousel-nav carousel-nav-right" data-carousel="certs">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-award"></i></div>
+                        <div class="cert-content">
+                            <h4>IBM watsonx.ai Sales Foundation</h4>
+                            <p>IBM</p>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-award"></i></div>
+                        <div class="cert-content">
+                            <h4>IBM watsonx Essentials</h4>
+                            <p>IBM</p>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-award"></i></div>
+                        <div class="cert-content">
+                            <h4>watsonx Orchestrate Practitioner</h4>
+                            <p>IBM</p>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-award"></i></div>
+                        <div class="cert-content">
+                            <h4>Vault Sales Foundation</h4>
+                            <p>IBM</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -479,7 +759,9 @@
     <section class="netflix-section referral-section" id="referral">
         <div class="section-container">
             <div class="referral-hero">
-                <h2 class="section-title">Join IBM - Request a Referral</h2>
+                <h2 class="section-title">
+                    <i class="fas fa-handshake"></i> Join IBM - Request a Referral
+                </h2>
                 <p class="referral-subtitle">
                     Looking to join IBM? I'd be happy to refer qualified candidates. Fill out the form below with your details.
                 </p>
@@ -584,9 +866,10 @@
             <div class="footer-social">
                 <a href="https://linkedin.com/in/albint/" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://albint.medium.com" target="_blank"><i class="fab fa-medium"></i></a>
-                <a href="https://github.com/albint" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/albin02t" target="_blank"><i class="fab fa-github"></i></a>
             </div>
-            <p class="footer-text">&copy; 2024 Albin Abi Thomas. All rights reserved.</p>
+            <p class="footer-text">&copy; 2024 Albin Thomas. All rights reserved.</p>
+            <p class="footer-tagline">Built with <i class="fas fa-heart"></i> and AI</p>
         </div>
     </footer>
 

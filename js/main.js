@@ -2,6 +2,195 @@
 // NETFLIX-THEMED PORTFOLIO JS
 // ================================
 
+// ===== NETFLIX LOADER =====
+window.addEventListener('load', () => {
+    const loader = document.getElementById('netflixLoader');
+
+    setTimeout(() => {
+        loader.classList.add('fade-out');
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500);
+    }, 2000);
+});
+
+// ===== TYPEWRITER EFFECT =====
+const typewriterElement = document.getElementById('typewriter');
+if (typewriterElement) {
+    const phrases = [
+        'Transforming Ideas into AI Solutions',
+        'Building Intelligent Systems at IBM',
+        'Innovating with Machine Learning & GenAI',
+        'Creating Impact Through Technology'
+    ];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+
+    function typeWriter() {
+        const currentPhrase = phrases[phraseIndex];
+
+        if (isDeleting) {
+            typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 50;
+        } else {
+            typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            // Pause at end of phrase
+            typingSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typingSpeed = 500;
+        }
+
+        setTimeout(typeWriter, typingSpeed);
+    }
+
+    // Start typewriter effect after loader
+    setTimeout(typeWriter, 2500);
+}
+
+// ===== COUNTER ANIMATIONS =====
+function animateCounter(element) {
+    const target = parseInt(element.getAttribute('data-target'));
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    let current = 0;
+
+    const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+            element.textContent = Math.floor(current);
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target;
+        }
+    };
+
+    updateCounter();
+}
+
+// Observe counters
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+            entry.target.classList.add('counted');
+            animateCounter(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-number').forEach(counter => {
+    counterObserver.observe(counter);
+});
+
+// ===== CIRCULAR PROGRESS RING ANIMATIONS =====
+function animateProgressRing(circle) {
+    const progress = parseInt(circle.getAttribute('data-progress'));
+    const radius = circle.r.baseVal.value;
+    const circumference = radius * 2 * Math.PI;
+
+    circle.style.strokeDasharray = `${circumference} ${circumference}`;
+    circle.style.strokeDashoffset = circumference;
+
+    const offset = circumference - (progress / 100) * circumference;
+
+    setTimeout(() => {
+        circle.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
+        circle.style.strokeDashoffset = offset;
+    }, 100);
+}
+
+// Observe progress rings
+const progressObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const circle = entry.target.querySelector('.progress-ring-circle');
+            if (circle && !circle.classList.contains('animated')) {
+                circle.classList.add('animated');
+                animateProgressRing(circle);
+            }
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.skill-progress-ring').forEach(ring => {
+    progressObserver.observe(ring);
+});
+
+// ===== AUTO-SCROLLING INFINITE CAROUSELS =====
+class AutoScrollCarousel {
+    constructor(carousel) {
+        this.carousel = carousel;
+        this.scrollSpeed = 1;
+        this.isHovered = false;
+        this.animationId = null;
+        this.cards = Array.from(carousel.querySelectorAll('.netflix-card'));
+
+        // Clone cards for infinite effect
+        this.cloneCards();
+
+        // Event listeners
+        this.carousel.addEventListener('mouseenter', () => this.pause());
+        this.carousel.addEventListener('mouseleave', () => this.resume());
+
+        // Start scrolling
+        this.start();
+    }
+
+    cloneCards() {
+        // Clone all cards and append them for seamless loop
+        this.cards.forEach(card => {
+            const clone = card.cloneNode(true);
+            this.carousel.appendChild(clone);
+        });
+    }
+
+    start() {
+        const scroll = () => {
+            if (!this.isHovered) {
+                this.carousel.scrollLeft += this.scrollSpeed;
+
+                // Reset scroll position for infinite loop
+                const maxScroll = this.carousel.scrollWidth / 2;
+                if (this.carousel.scrollLeft >= maxScroll) {
+                    this.carousel.scrollLeft = 0;
+                }
+            }
+            this.animationId = requestAnimationFrame(scroll);
+        };
+
+        scroll();
+    }
+
+    pause() {
+        this.isHovered = true;
+    }
+
+    resume() {
+        this.isHovered = false;
+    }
+
+    stop() {
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+        }
+    }
+}
+
+// Initialize auto-scroll carousels
+document.querySelectorAll('.netflix-carousel.auto-scroll').forEach(carousel => {
+    new AutoScrollCarousel(carousel);
+});
+
 // ===== NAVIGATION SCROLL EFFECT =====
 const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-links a');
@@ -72,7 +261,7 @@ if (mobileMenuBtn) {
     });
 }
 
-// ===== NETFLIX CAROUSEL FUNCTIONALITY =====
+// ===== NETFLIX CAROUSEL FUNCTIONALITY (Manual Navigation) =====
 const carouselNavButtons = document.querySelectorAll('.carousel-nav');
 
 carouselNavButtons.forEach(button => {
@@ -103,8 +292,8 @@ function updateCarouselNavVisibility(carousel, leftBtn, rightBtn) {
     rightBtn.style.opacity = isAtEnd ? '0' : '';
 }
 
-// Add scroll listeners to all carousels
-document.querySelectorAll('.netflix-carousel').forEach(carousel => {
+// Add scroll listeners to all carousels (for manual navigation)
+document.querySelectorAll('.netflix-carousel:not(.auto-scroll)').forEach(carousel => {
     carousel.addEventListener('scroll', () => {
         const container = carousel.closest('.carousel-container');
         if (!container) return;
@@ -124,8 +313,8 @@ document.querySelectorAll('.netflix-carousel').forEach(carousel => {
     }
 });
 
-// Touch/Drag scrolling for carousels
-document.querySelectorAll('.netflix-carousel').forEach(carousel => {
+// Touch/Drag scrolling for non-auto-scroll carousels
+document.querySelectorAll('.netflix-carousel:not(.auto-scroll)').forEach(carousel => {
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -377,6 +566,39 @@ if ('IntersectionObserver' in window) {
     });
 }
 
+// ===== BUTTON RIPPLE EFFECT =====
+document.querySelectorAll('.btn-play, .btn-info, .btn-netflix').forEach(button => {
+    button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+
+        this.appendChild(ripple);
+
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    });
+});
+
+// ===== PARALLAX EFFECT FOR BACKGROUND ORBS =====
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const orbs = document.querySelectorAll('.gradient-orb');
+
+    orbs.forEach((orb, index) => {
+        const speed = 0.1 + (index * 0.05);
+        orb.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+});
+
 // ===== CONSOLE MESSAGE =====
 console.log(
     '%c🎬 Welcome to my Netflix-themed portfolio!',
@@ -390,15 +612,10 @@ console.log(
     '%c💼 Looking to connect? Reach out via LinkedIn or email!',
     'color: #b3b3b3; font-size: 12px;'
 );
-
-// ===== PAGE LOAD ANIMATION =====
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-    }, 100);
-});
+console.log(
+    '%c✨ Built with vanilla JavaScript - No frameworks needed!',
+    'color: #46d369; font-size: 12px;'
+);
 
 // ===== PREVENT HORIZONTAL OVERFLOW =====
 function preventHorizontalScroll() {
