@@ -77,13 +77,13 @@
                     <span class="cursor">|</span>
                 </h2>
                 <p class="hero-description">
-                    4+ years delivering production-ready AI solutions using LLMs, Generative AI, and MLOps.
+                    5 years delivering production-ready AI solutions using LLMs, Generative AI, and MLOps.
                     Building agentic RAG systems, deploying ML pipelines, and enabling scalable AI deployments.
                 </p>
                 <div class="hero-stats">
                     <div class="stat">
                         <div class="stat-value">
-                            <span class="stat-number" data-target="4">0</span><span class="stat-plus">+</span>
+                            <span class="stat-number" data-target="5">0</span>
                         </div>
                         <span class="stat-label">Years Experience</span>
                     </div>
@@ -137,7 +137,11 @@
             </h2>
             <div class="featured-card">
                 <div class="featured-image">
-                    <div class="play-button-large">
+                    <video class="featured-video" id="featuredVideo" preload="metadata">
+                        <source src="assets/shinigami-eyes cropped.mp4#t=0.1" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="play-button-large" id="playButton">
                         <i class="fas fa-play"></i>
                     </div>
                     <div class="featured-badge-top">
@@ -861,7 +865,7 @@
                 <a href="https://albint.medium.com" target="_blank"><i class="fab fa-medium"></i></a>
                 <a href="https://github.com/albin02t" target="_blank"><i class="fab fa-github"></i></a>
             </div>
-            <p class="footer-text">&copy; 2024 Albin Thomas. All rights reserved.</p>
+            <p class="footer-text">&copy; 2025 Albin Thomas. All rights reserved.</p>
             <p class="footer-tagline">Built with <i class="fas fa-heart"></i> and AI</p>
         </div>
     </footer>
@@ -880,6 +884,19 @@
             <i class="fas fa-music"></i>
             <span class="music-status">On</span>
         </button>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="video-modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <video class="video-modal-video" id="modalVideo" controls>
+                <source src="assets/shinigami-eyes cropped.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </div>
 
     <!-- Custom JavaScript -->

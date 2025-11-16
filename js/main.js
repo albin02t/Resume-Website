@@ -58,6 +58,49 @@ if (typewriterElement) {
     setTimeout(typeWriter, 2500);
 }
 
+// ===== FEATURED VIDEO PLAYER WITH MODAL =====
+const playButton = document.getElementById('playButton');
+const videoModal = document.getElementById('videoModal');
+const modalVideo = document.getElementById('modalVideo');
+const closeModal = document.getElementById('closeModal');
+
+if (playButton && videoModal && modalVideo) {
+    // Open modal when play button is clicked
+    playButton.addEventListener('click', () => {
+        videoModal.classList.add('active');
+        modalVideo.play();
+        // Prevent body scroll when modal is open
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Close modal function
+    const closeVideoModal = () => {
+        videoModal.classList.remove('active');
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+        document.body.style.overflow = '';
+    };
+
+    // Close modal when clicking close button
+    if (closeModal) {
+        closeModal.addEventListener('click', closeVideoModal);
+    }
+
+    // Close modal when clicking outside video
+    videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) {
+            closeVideoModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+            closeVideoModal();
+        }
+    });
+}
+
 // ===== COUNTER ANIMATIONS =====
 function animateCounter(element) {
     const target = parseInt(element.getAttribute('data-target'));
@@ -553,11 +596,11 @@ let isMusicPlaying = false;
 
 // Set initial volume
 if (backgroundMusic) {
-    backgroundMusic.volume = 0.5; // 50% volume for background music
+    backgroundMusic.volume = 0.6; // 60% volume for background music
 }
 
 if (netflixSound) {
-    netflixSound.volume = 0.9; // 90% volume for Netflix sound
+    netflixSound.volume = 1.0; // 100% volume for Netflix sound (maximum)
 }
 
 // Play Netflix "ta-dum" sound after loader, then start background music
