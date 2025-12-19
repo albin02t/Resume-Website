@@ -825,6 +825,23 @@
                         </div>
                     </div>
 
+                    <div class="form-group full-width" style="margin-bottom: 24px;">
+                        <label for="resumeLink">Resume Link (View Access) *</label>
+                        <input
+                            type="url"
+                            id="resumeLink"
+                            name="resumeLink"
+                            placeholder="https://drive.google.com/… or https://yourname.dev/resume.pdf"
+                            required
+                            pattern="https?://.*"
+                        >
+                        <small style="color: #b3b3b3; margin-top: 5px; display: block;">
+                            <i class="fas fa-info-circle"></i>
+                            Please share a public, view-only resume link (PDF preferred).
+                            Ensure access is set to <b>“Anyone with the link can view.”</b>
+                        </small>
+                    </div>
+
                     <div class="form-group full-width">
                         <label for="message">Why IBM? (Optional)</label>
                         <textarea id="message" name="message" rows="4" placeholder="Tell me why you're interested in this role..."></textarea>
