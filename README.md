@@ -27,6 +27,22 @@ Simply open `index.html` in your web browser to view the website locally.
 
 ### 2. Customize Your Content
 
+#### Downloadable Resume
+
+Place the PDF you want visitors to download in the `data/` folder. The current download button points to:
+
+```text
+data/Resume-sept-2025-ver12.pdf
+```
+
+To update the resume without changing the website code, replace that file with the new PDF and keep the same filename. If you prefer a different filename, update the `href` on the Resume link in `index.html` (around line 110), for example:
+
+```html
+<a href="data/my-new-resume.pdf" download class="btn-download">
+```
+
+Use the `data/` copy; the similarly named PDF in `assets/` is not used by the download button.
+
 #### Personal Information
 
 Edit `index.html` and replace the placeholder content:

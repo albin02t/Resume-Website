@@ -19,7 +19,7 @@ const typewriterElement = document.getElementById('typewriter');
 if (typewriterElement) {
     const phrases = [
         'Transforming Ideas into AI Solutions',
-        'Building Intelligent Systems at IBM',
+        'Studying Computer Science at NYU Courant',
         'Innovating with Machine Learning & GenAI',
         'Creating Impact Through Technology'
     ];
@@ -562,7 +562,7 @@ console.log(
     'color: #E50914; font-size: 20px; font-weight: bold;'
 );
 console.log(
-    '%c👨‍💻 Albin Abi Thomas - Senior AI Engineer @ IBM',
+    '%c👨‍💻 Albin Abi Thomas - MS Computer Science Student @ NYU Courant',
     'color: #ffffff; font-size: 14px;'
 );
 console.log(
